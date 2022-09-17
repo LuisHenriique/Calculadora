@@ -35,22 +35,42 @@ main h1 {
   margin-bottom: 1.8rem;
 }
 
+.container {
+  margin-block: auto;
+  padding: 1rem;
+
+  background-color: rgba(60, 64, 67, 255);
+
+  border-radius: 0.6rem;
+}
+
 .display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 2.9rem;
 
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #fff;
   text-align: right;
 
   background-color: transparent;
 
   outline: none;
-  border: 1px solid rgb(112, 112, 112);
+  border: none;
   border-radius: 0.6rem;
+}
 
-  margin-bottom: 1rem;
-  padding-inline: 1rem;
+.addMoreOperators {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.addMoreOperators .btn {
+  background-color: transparent;
+  font-size: 1.8rem;
 }
 
 .calculadora-grid {

@@ -5,40 +5,81 @@ function calculator() {
     startCalculator() {
       this.clickButton()
     },
+    performCalculations() {
+      const value = this.display.value
 
+      if (value === 'π') {
+        this.calculationPI()
+        return
+      }
+      try {
+        let calculation = eval(value)
+
+        if (!calculation) {
+          alert('Conta inválida')
+        }
+
+        this.display.value = calculation
+      } catch (e) {
+        alert('Conta inválida')
+      }
+    },
     clickButton() {
       document.addEventListener('click', e => {
         const el = e.target
 
         if (el.classList.contains('btn-num')) {
           const value = el.innerText
-          this.displayText(value)
+          this.addValueInDisplay(value)
         }
 
         if (el.classList.contains('btn-clear')) {
-          this.clearDisplay()
+          this.clearDisplayValue()
         }
 
         if (el.classList.contains('btn-del')) {
-          this.deleteOne()
+          this.deleteOneCaractere()
+        }
+
+        if (el.classList.contains('btn-eq')) {
+          this.performCalculations()
+        }
+
+        if (el.classList.contains('btn-root')) {
+          let value = el.innerText
+          this.display.value = value
+        }
+
+        if (el.classList.contains('btn-pi')) {
+          this.display.value = el.innerText
         }
       })
     },
 
-
-    displayText(value) {
+    addValueInDisplay(value) {
       this.display.value += value
     },
 
-    clearDisplay() {
+    clearDisplayValue() {
       this.display.value = ''
     },
 
-    deleteOne() {
+    deleteOneCaractere() {
       this.display.value = this.display.value.slice(0, -1)
+    },
+
+    /*squareRoot(value) {
+      const valueNumber = value.replace(/([^\d])+/gim, '')
+      const root = Math.sqrt(valueNumber)
+      this.display.value = root
+    }*/
+
+    calculationPI() {
+      const pi = 3.14159265359
+      this.display.value = pi
     }
   }
 }
 
-const soma = calculator()
-soma.startCalculator()
+const runCalculator = calculator()
+runCalculator.startCalculator()
