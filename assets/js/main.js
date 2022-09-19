@@ -4,7 +4,9 @@ function calculator() {
 
     startCalculator() {
       this.clickButton()
+      this.keypressValue()
     },
+
     performCalculations() {
       const value = this.display.value
 
@@ -12,6 +14,7 @@ function calculator() {
         this.calculationPI()
         return
       }
+
       try {
         let calculation = eval(value)
 
@@ -23,6 +26,14 @@ function calculator() {
       } catch (e) {
         alert('Conta inválida')
       }
+    },
+
+    keypressValue() {
+      document.addEventListener('keypress', e => {
+        if (e.keyCode === 13) {
+          this.performCalculations()
+        }
+      })
     },
     clickButton() {
       document.addEventListener('click', e => {
@@ -45,11 +56,6 @@ function calculator() {
           this.performCalculations()
         }
 
-        if (el.classList.contains('btn-root')) {
-          let value = el.innerText
-          this.display.value = value
-        }
-
         if (el.classList.contains('btn-pi')) {
           this.display.value = el.innerText
         }
@@ -67,12 +73,6 @@ function calculator() {
     deleteOneCaractere() {
       this.display.value = this.display.value.slice(0, -1)
     },
-
-    /*squareRoot(value) {
-      const valueNumber = value.replace(/([^\d])+/gim, '')
-      const root = Math.sqrt(valueNumber)
-      this.display.value = root
-    }*/
 
     calculationPI() {
       const pi = 3.14159265359
