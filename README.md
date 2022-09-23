@@ -1,7 +1,7 @@
 <h1 align="center">Calculadora</h1>
 
 <p align="center">
-  <img alt="Calculadora" src="./assets/image/capa.png" width="80%">
+  <img alt="Calculadora" src="./assets/image/capa.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
